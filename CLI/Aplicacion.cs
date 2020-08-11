@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading;
+using Datos;
 using Entidades;
 using Microsoft.Extensions.Configuration;
 using Servicios;
@@ -20,9 +21,9 @@ namespace CLI
       _config = config;
     }
 
-    public bool FiltrarTipo(Publicacion p)
+    public bool FiltrarTipo(Publicacion x)
     {
-      return p.Tipo == TipoPublicacion.Revista;
+      return x.Tipo == TipoPublicacion.Revista;
     }
 
     public bool FiltrarPaginas(Publicacion p)
@@ -41,6 +42,22 @@ namespace CLI
       ServiciosImportacion imp = new ServiciosImportacion(_config);
 
       IEnumerable<Publicacion> listaOriginal = imp.ImportarCSV(Archivo);
+
+      ContextoPublicaciones ctx = new ContextoPublicaciones("");
+
+
+      //ctx.Publicaciones.Where(p => p.Titulo.Contains("prog"));
+
+      foreach (var item in listaOriginal)
+        ctx.Publicaciones.Add(item);
+
+      ctx.SaveChanges();
+
+      Console.WriteLine($"Instancias generadas {Publicacion.ContadorInstancias}");
+
+      var stats = listaOriginal.Estadisticas<Publicacion>(h => h.Paginas);
+
+      Console.WriteLine($"Minimo: {stats.min} Maximo: {stats.max} Promedio: {stats.prom}");
 
       //  AISLO LA EXPRESION LINQ (FLUENT)
       //
@@ -63,7 +80,7 @@ namespace CLI
       }
 
       /*
-            List<Publicacion> listaFiltrada = new List<Publicacion>();
+            //List<Publicacion> listaFiltrada = new List<Publicacion>();
 
             //  DELEGADO GENERICO
             //
@@ -78,8 +95,7 @@ namespace CLI
             {
               Console.WriteLine($"{p.Titulo} {p.Paginas}");
             }
-      */
-
+      
       /*
             Publicacion --> bool
 

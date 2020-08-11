@@ -7,7 +7,14 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CLI", "CLI\CLI.csproj", "{1
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Servicios", "Servicios\Servicios.csproj", "{F70D2C21-C3A5-4DC6-B806-85B2F1906268}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entidades", "Entidades\Entidades.csproj", "{9C177EE1-DD19-45B9-9F89-27EC9798108B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Entidades", "Entidades\Entidades.csproj", "{9C177EE1-DD19-45B9-9F89-27EC9798108B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Datos", "Datos\Datos.csproj", "{9413A1DA-A02A-4406-820F-E1C7EB023BA6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "database_scripts", "database_scripts", "{E9D5E7F6-C8F9-4044-A592-F479AC0A7A98}"
+	ProjectSection(SolutionItems) = preProject
+		db_scripts\Publicaciones.sql = db_scripts\Publicaciones.sql
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +34,10 @@ Global
 		{9C177EE1-DD19-45B9-9F89-27EC9798108B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9C177EE1-DD19-45B9-9F89-27EC9798108B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9C177EE1-DD19-45B9-9F89-27EC9798108B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9413A1DA-A02A-4406-820F-E1C7EB023BA6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9413A1DA-A02A-4406-820F-E1C7EB023BA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9413A1DA-A02A-4406-820F-E1C7EB023BA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9413A1DA-A02A-4406-820F-E1C7EB023BA6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

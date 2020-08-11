@@ -11,9 +11,10 @@ using Entidades;
 
 namespace Servicios
 {
-
   public class ServiciosImportacion
   {
+    private const string VALOR = "Hola";
+
     private IConfiguration _config;
 
     public ServiciosImportacion(IConfiguration config)
@@ -104,6 +105,7 @@ namespace Servicios
                 paginasReales = paginas;
 
               pub.Paginas = paginasReales;
+              
               //  Console.WriteLine($"El libro tiene {(paginas == 0 ? "paginas no informadas":$"{paginas} paginas")}");
             }
 
@@ -133,6 +135,8 @@ namespace Servicios
             */
 
             publicaciones.Add(pub);
+
+            Publicacion.MostrarInstancias();
           }
           else
           {
