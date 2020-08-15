@@ -8,7 +8,7 @@ namespace Datos
 {
   public class ContextoPublicaciones : DbContext
   {
-    private string _conn;
+    private readonly string _conn;
 
     public DbSet<Publicacion> Publicaciones { get; set; }
 
@@ -22,6 +22,14 @@ namespace Datos
       optionsBuilder.UseSqlServer(_conn);
 
       base.OnConfiguring(optionsBuilder);
+    }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+      modelBuilder.ApplyConfiguration(new ConfigurarPublicaciones());
+      modelBuilder.ApplyConfiguration(new ConfigurarAutores());
+
+      base.OnModelCreating(modelBuilder);
     }
   }
 }

@@ -12,12 +12,17 @@ namespace CLI
       //
       var cfg = new ConfigurationBuilder()
         .SetBasePath(Directory.GetCurrentDirectory())
-        .AddJsonFile("config.json")
         .AddCommandLine(args)
+        .AddJsonFile("config.json")
         .Build();
 
       //  DECLARACION
       Aplicacion app = new Aplicacion(cfg);
+
+      //  Console.WriteLine(cfg["conexion"]);
+      //  Console.WriteLine(cfg["archivo"]);
+      //  Console.ReadLine();
+
 
       //  ASIGNACION
       //
@@ -25,7 +30,9 @@ namespace CLI
       app.Archivo = "d:\\libros.csv";
       try
       {
-        app.Run();
+        //  app.Run();
+        app.Consultar();
+        //  app.CargarAutores();
         Console.WriteLine("Finalizado OK!");
       }
       catch (Exception ex)

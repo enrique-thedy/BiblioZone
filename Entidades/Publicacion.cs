@@ -43,6 +43,10 @@ namespace Entidades
     public int? Paginas { get; set; }
 
     public TipoPublicacion Tipo { get; set; }
+
+    public int Vendidos { get; set; }
+
+    public virtual Autor Autor { get; set; }
   }
 
   public class Autor

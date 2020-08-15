@@ -1,7 +1,7 @@
 ﻿
-CREATE TABLE dbo.Publicaciones 
+CREATE tABLE dbo.Publicaciones 
 (
-    ID_Pub              int           identity (1, 1) not null,
+    ID_Pub              int           identity (1, 1) not null primary key,
     Titulo              varchar (400) not null,
     Subtitulo           varchar (400) null,
     Autores             varchar (100) null,
@@ -19,10 +19,21 @@ CREATE TABLE dbo.Publicaciones
     Precio_Lista      	decimal (18)  null,
     Moneda_Lista      	varchar (50)  null,
     Precio_Venta      	decimal (18)  null,
-    Moneda_Venta      	varchar (50)  null
+    Moneda_Venta      	varchar (50)  null,
+    ID_Autor            int           null,
+    constraint FK_Publicaciones_Autores foreign key (ID_Autor) references Autores(ID)
 );
+
+create table Autores
+(
+  ID      int not null identity primary key,
+  Nombre  varchar(200) 
+)
+
 
 select * from Publicaciones;
 
 truncate table Publicaciones;
+
+select * from Autores
 

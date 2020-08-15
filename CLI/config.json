@@ -6,5 +6,12 @@
 
   "listaUsuarios": [ 123, 456, 789, 111 ],
 
-  "saltarLineas": 1 
+  "saltarLineas": 1,
+
+  "conexion": "sql",
+
+  "ConnectionStrings": {
+    "localdb": "Server=(localdb)\\CURSO;Database=BZ;Integrated Security=true;",
+    "sql": "Server=hal-9000;Database=CURSO;User ID=curso;Password=12345678;"
+  } 
 }

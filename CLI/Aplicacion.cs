@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading;
 using Datos;
 using Entidades;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Servicios;
 
@@ -14,11 +15,14 @@ namespace CLI
   {
     public string Archivo { get; set; }
 
-    private IConfiguration _config;
+    private readonly IConfiguration _config;
+
+    private readonly string _cadenaConexion;
 
     public Aplicacion(IConfiguration config)
     {
       _config = config;
+      _cadenaConexion = _config.GetConnectionString(_config["conexion"]);
     }
 
     public bool FiltrarTipo(Publicacion x)
@@ -43,15 +47,17 @@ namespace CLI
 
       IEnumerable<Publicacion> listaOriginal = imp.ImportarCSV(Archivo);
 
-      ContextoPublicaciones ctx = new ContextoPublicaciones("");
-
+      ContextoPublicaciones ctx = new ContextoPublicaciones(_cadenaConexion);
 
       //ctx.Publicaciones.Where(p => p.Titulo.Contains("prog"));
+
+      ctx.Database.ExecuteSqlRaw("truncate table Publicaciones");
 
       foreach (var item in listaOriginal)
         ctx.Publicaciones.Add(item);
 
       ctx.SaveChanges();
+
 
       Console.WriteLine($"Instancias generadas {Publicacion.ContadorInstancias}");
 
@@ -131,6 +137,29 @@ namespace CLI
       Console.ReadLine();
     }
 
+    public void Consultar()
+    {
+      ContextoPublicaciones ctx = new ContextoPublicaciones(_cadenaConexion);
+
+      foreach (var p in ctx.Publicaciones.Include(p=>p.Autor).Where(pub => pub.Autor.Nombre.Contains("Gates")))
+      {
+        Console.WriteLine($"{p.Titulo} {p.Paginas} {p.Autor.Nombre}");
+      }
+
+    }
+
+    public void CargarAutores()
+    {
+      ContextoPublicaciones ctx = new ContextoPublicaciones(_cadenaConexion);
+
+      Publicacion p = ctx.Publicaciones.SingleOrDefault(pub => pub.Clave == 3);
+
+      p.Autor = new Autor() { Nombre = "Bill Gates"};
+
+      ctx.Add(new Autor() {Nombre = "Larry Page"} );
+
+      ctx.SaveChanges();
+    }
   }
 }
 
