@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Entidades", "Entidades\Enti
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Datos", "Datos\Datos.csproj", "{9413A1DA-A02A-4406-820F-E1C7EB023BA6}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "database_scripts", "database_scripts", "{E9D5E7F6-C8F9-4044-A592-F479AC0A7A98}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "scripts_db", "scripts_db", "{EB76C887-3A04-4330-8B6B-3BC706B3FC5E}"
 	ProjectSection(SolutionItems) = preProject
 		db_scripts\Publicaciones.sql = db_scripts\Publicaciones.sql
 	EndProjectSection

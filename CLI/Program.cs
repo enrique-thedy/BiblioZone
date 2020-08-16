@@ -12,13 +12,14 @@ namespace CLI
       //
       var cfg = new ConfigurationBuilder()
         .SetBasePath(Directory.GetCurrentDirectory())
-        .AddCommandLine(args)
         .AddJsonFile("config.json")
+        .AddCommandLine(args)
         .Build();
 
       //  DECLARACION
       Aplicacion app = new Aplicacion(cfg);
-
+      
+      
       //  Console.WriteLine(cfg["conexion"]);
       //  Console.WriteLine(cfg["archivo"]);
       //  Console.ReadLine();
@@ -31,8 +32,8 @@ namespace CLI
       try
       {
         //  app.Run();
-        app.Consultar();
         //  app.CargarAutores();
+        app.Consultar();
         Console.WriteLine("Finalizado OK!");
       }
       catch (Exception ex)

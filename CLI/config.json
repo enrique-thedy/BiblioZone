@@ -1,8 +1,10 @@
 {
-  "nombre": "Roberto",
-  "apellido": "Passareli",
-  "asisteCurso": true,
-  "edad": 67,
+  "user": {
+    "nombre": "Roberto",
+    "apellido": "Passareli",
+    "asisteCurso": true,
+    "edad": 67
+  },
 
   "listaUsuarios": [ 123, 456, 789, 111 ],
 
@@ -12,6 +14,7 @@
 
   "ConnectionStrings": {
     "localdb": "Server=(localdb)\\CURSO;Database=BZ;Integrated Security=true;",
-    "sql": "Server=hal-9000;Database=CURSO;User ID=curso;Password=12345678;"
-  } 
+    "sql": "Server=hal-9000;Database=CURSO;User ID=curso;Password=12345678;",
+    "mysql": "Server=vm-jarvis;Database=curso;Uid=ethedy;Pwd=12345678;"
+  }
 }

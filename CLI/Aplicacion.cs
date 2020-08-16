@@ -47,7 +47,7 @@ namespace CLI
 
       IEnumerable<Publicacion> listaOriginal = imp.ImportarCSV(Archivo);
 
-      ContextoPublicaciones ctx = new ContextoPublicaciones(_cadenaConexion);
+      ContextoPublicaciones ctx = new ContextoPublicaciones(_config);
 
       //ctx.Publicaciones.Where(p => p.Titulo.Contains("prog"));
 
@@ -139,7 +139,7 @@ namespace CLI
 
     public void Consultar()
     {
-      ContextoPublicaciones ctx = new ContextoPublicaciones(_cadenaConexion);
+      ContextoPublicaciones ctx = new ContextoPublicaciones(_config);
 
       foreach (var p in ctx.Publicaciones.Include(p=>p.Autor).Where(pub => pub.Autor.Nombre.Contains("Gates")))
       {
@@ -150,7 +150,7 @@ namespace CLI
 
     public void CargarAutores()
     {
-      ContextoPublicaciones ctx = new ContextoPublicaciones(_cadenaConexion);
+      ContextoPublicaciones ctx = new ContextoPublicaciones(_config);
 
       Publicacion p = ctx.Publicaciones.SingleOrDefault(pub => pub.Clave == 3);
 

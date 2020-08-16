@@ -37,7 +37,7 @@ namespace Datos
   {
     public void Configure(EntityTypeBuilder<Autor> builder)
     {
-      builder.HasKey(aut => aut.ID);
+      //  builder.HasKey(aut => aut.ID);
       builder.ToTable("Autores");
       //  builder.Property(aut => aut.ID).HasColumnName("ID");
     }
